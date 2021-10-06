@@ -6,12 +6,12 @@
 Summary:	Multipoint-to-Multipoint VPN library
 Summary(pl.UTF-8):	Biblioteka VPN wiele-do-wielu
 Name:		kronosnet
-Version:	1.7
+Version:	1.22
 Release:	1
 License:	LGPL v2.1+ (libraries), GPL v2+ (applications)
 Group:		Libraries
 Source0:	https://kronosnet.org/releases/%{name}-%{version}.tar.xz
-# Source0-md5:	bec95396cf7b9f37a09b0cf7c119058a
+# Source0-md5:	6098b6fafe83ab99c83e759171ba4664
 URL:		https://kronosnet.org/
 BuildRequires:	bzip2-devel
 BuildRequires:	doxygen
@@ -32,6 +32,7 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	xz-devel
 BuildRequires:	zlib-devel
+BuildRequires:	zstd-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -169,6 +170,7 @@ fi
 %attr(755,root,root) %{_libdir}/kronosnet/compress_lzma.so
 %attr(755,root,root) %{_libdir}/kronosnet/compress_lzo2.so
 %attr(755,root,root) %{_libdir}/kronosnet/compress_zlib.so
+%attr(755,root,root) %{_libdir}/kronosnet/compress_zstd.so
 %attr(755,root,root) %{_libdir}/kronosnet/crypto_nss.so
 %attr(755,root,root) %{_libdir}/kronosnet/crypto_openssl.so
 
