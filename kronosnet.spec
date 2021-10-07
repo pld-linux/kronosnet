@@ -16,8 +16,7 @@ URL:		https://kronosnet.org/
 BuildRequires:	bzip2-devel
 BuildRequires:	doxygen
 BuildRequires:	gcc >= 5:3.2
-# TODO: switch to 3.3 when available
-BuildRequires:	libnl-devel >= 3.2
+BuildRequires:	libnl-devel >= 3.3
 BuildRequires:	libqb-devel
 BuildRequires:	libsctp-devel
 BuildRequires:	libxml2-devel >= 2.0
@@ -33,6 +32,7 @@ BuildRequires:	xz
 BuildRequires:	xz-devel
 BuildRequires:	zlib-devel
 BuildRequires:	zstd-devel
+Requires:	libnl >= 3.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
