@@ -7,11 +7,12 @@ Summary:	Multipoint-to-Multipoint VPN library
 Summary(pl.UTF-8):	Biblioteka VPN wiele-do-wielu
 Name:		kronosnet
 Version:	1.29
-Release:	1
+Release:	2
 License:	LGPL v2.1+ (libraries), GPL v2+ (applications)
 Group:		Libraries
 Source0:	https://kronosnet.org/releases/%{name}-%{version}.tar.xz
 # Source0-md5:	d95a5870ce35ddd12e6cd7a783c0b202
+Patch0:		x32.patch
 URL:		https://kronosnet.org/
 BuildRequires:	bzip2-devel
 BuildRequires:	doxygen
@@ -102,6 +103,7 @@ UWAGA: to oprogramowanie jest eksperymentalne i nie dokończone.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \

@@ -1,0 +1,26 @@
+--- kronosnet-1.29/libknet/links.c.orig	2024-06-06 07:41:34.000000000 +0200
++++ kronosnet-1.29/libknet/links.c	2024-06-30 10:28:25.913871391 +0200
+@@ -896,7 +896,11 @@
+ 
+ 	if ((useconds_t)(interval * 1000) < KNET_THREADS_TIMERES) {
+ 		log_warn(knet_h, KNET_SUB_LINK,
++#if defined(__x86_64__) && defined(__ILP32__)
++			 "host: %u link: %u interval: %llu too small (%s). interval lower than thread_timer_res (%u ms) has no effect",
++#else
+ 			 "host: %u link: %u interval: %lu too small (%s). interval lower than thread_timer_res (%u ms) has no effect",
++#endif
+ 			 host_id, link_id, interval, strerror(savederrno), (KNET_THREADS_TIMERES / 1000));
+ 	}
+ 
+@@ -904,7 +908,11 @@
+ 		err = -1;
+ 		savederrno = EINVAL;
+ 		log_err(knet_h, KNET_SUB_LINK,
++#if defined(__x86_64__) && defined(__ILP32__)
++			"host: %u link: %u pong timeout: %llu too small (%s). timeout cannot be less than thread_timer_res (%u ms)",
++#else
+ 			"host: %u link: %u pong timeout: %lu too small (%s). timeout cannot be less than thread_timer_res (%u ms)",
++#endif
+ 			host_id, link_id, timeout, strerror(savederrno), (KNET_THREADS_TIMERES / 1000));
+ 		goto exit_unlock;
+ 	}
